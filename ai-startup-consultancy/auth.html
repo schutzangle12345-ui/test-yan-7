@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join test-yan-7 | AI Startup Consultancy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        :root {
+            --color-primary: #D32027;
+            --color-primary-dark: #b31b21;
+            --color-background: #000000;
+            --color-surface: #121212;
+            --color-text: #FFFFFF;
+            --color-text-muted: #A0A0A0;
+            --color-border: #262626;
+            --color-accent: #FFFFFF;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --radius-pill: 9999px;
+            --radius-large: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        nav {
+            display: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-pill);
+            font-weight: 800;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-primary);
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1.5rem 4rem;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--color-surface);
+            border-radius: var(--radius-large);
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-header img {
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.04em;
+        }
+
+        .auth-header p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: var(--radius-pill);
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--color-text-muted);
+            padding: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: var(--radius-pill);
+            transition: var(--transition);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+        }
+
+        .tab-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1.1rem 1.5rem;
+            background: #1a1a1a;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-pill);
+            color: white;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: #222;
+        }
+
+        .auth-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        footer {
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-text-muted);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover svg {
+            fill: var(--color-primary);
+        }
+
+        .copyright {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Success Message Styling */
+        [data-success] {
+            text-align: center;
+            background: rgba(0, 255, 100, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+  <base href="/ai-startup-consultancy/" />
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo-test-yan-7.png" alt="test-yan-7 logo" style="height:40px;object-fit:contain">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="auth.html" style="color: var(--color-primary)">Sign In</a>
+        </nav>
+        <a href="contact.html" class="btn btn-primary" data-track="cta_click">Get Started</a>
+    </header>
+
+    <main>
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Welcome</h1>
+                <p>Scale your AI product with expert guidance.</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn" onclick="switchTab('signin')">Sign In</button>
+                <button class="tab-btn active" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- SIGN UP TAB -->
+            <div id="signup-tab" class="tab-content active">
+                <form data-backend="signup">
+                    <input type="hidden" name="role" value="user">
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="name@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Min. 6 characters" minlength="6" required>
+                    </div>
+
+                    <p data-success style="display:none; color: #4ade80; font-weight: bold; margin-top: 1rem;">Registration successful! Redirecting to login...</p>
+
+                    <button type="submit" class="btn btn-primary auth-btn" data-track="cta_click">Create Account</button>
+                </form>
+            </div>
+
+            <!-- SIGN IN TAB -->
+            <div id="signin-tab" class="tab-content">
+                <form>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="name@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary auth-btn" data-track="cta_click">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="auth.html">Sign In</a>
+        </div>
+        <div class="social-icons">
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+        <p class="copyright">© 2026 test-yan-7. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function switchTab(tab) {
+            const signupTab = document.getElementById('signup-tab');
+            const signinTab = document.getElementById('signin-tab');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+
+            if (tab === 'signup') {
+                signupTab.classList.add('active');
+                signinTab.classList.remove('active');
+                tabBtns[1].classList.add('active');
+                tabBtns[0].classList.remove('active');
+            } else {
+                signupTab.classList.remove('active');
+                signinTab.classList.add('active');
+                tabBtns[0].classList.add('active');
+                tabBtns[1].classList.remove('active');
+            }
+        }
+
+        // Auto-switch logic after successful signup
+        const signupForm = document.querySelector('form[data-backend="signup"]');
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    const successMsg = signupForm.querySelector('[data-success]');
+                    if (successMsg && successMsg.style.display === 'block') {
+                        setTimeout(() => {
+                            switchTab('signin');
+                            successMsg.style.display = 'none';
+                        }, 2000);
+                    }
+                }
+            });
+        });
+
+        const successEl = signupForm.querySelector('[data-success]');
+        if (successEl) {
+            observer.observe(successEl, { attributes: true });
+        }
+    </script>
+
+    <script>
+    (function() {
+      var BACKEND = 'http://localhost:3000/api';
+      var TOKEN = 'b4ab5682df04a85f2837e93c6bc4ba102ba2f281aafcd57aa183f779ce2da323';
+      var DOMAIN = 'aistartupconsultancy.com';
+      var HEADERS = { 'Content-Type': 'application/json', 'X-Token': TOKEN, 'X-Domain': DOMAIN };
+
+      // 1. Auto-track pageview
+      fetch(BACKEND + '/track', {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify({ event: 'pageview', path: window.location.pathname })
+      }).catch(function(){});
+
+      // 2. Track CTA clicks
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('[data-track]');
+        if (el) {
+          fetch(BACKEND + '/track', {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({ event: el.getAttribute('data-track'), path: window.location.pathname })
+          }).catch(function(){});
+        }
+      });
+
+      var FORM_ID = '134';
+
+      // 3. Handle forms (Contact, Signup, Waitlist)
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-backend]');
+        if (!form) return;
+        e.preventDefault();
+        var type = form.getAttribute('data-backend');
+        var endpoint = type === 'signup' ? '/users' : '/forms/submit';
+        
+        // Extract dynamic form fields
+        var data = {};
+        new FormData(form).forEach(function(v, k) { data[k] = v; });
+        
+        // Add Form ID if it's a general form and we have it
+        if (type === 'form' && FORM_ID) {
+          data.formId = FORM_ID;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = '';
+        if (btn) {
+          originalText = btn.innerText;
+          btn.innerText = 'Sending...';
+          btn.disabled = true;
+        }
+
+        // Track Form Submission Event
+        fetch(BACKEND + '/track', {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify({ 
+            event: 'form_submission', 
+            path: window.location.pathname,
+            metadata: { formType: type } 
+          })
+        }).catch(function(){});
+
+        // Submit Form Data
+        fetch(BACKEND + endpoint, {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify(data)
+        }).then(function(r) { return r.json(); }).then(function(res) {
+          if (res.success) {
+            var msg = form.querySelector('[data-success]');
+            if (msg) { msg.style.display = 'block'; }
+            form.reset();
+            if (btn) btn.style.display = 'none';
+          } else {
+            alert(res.error || 'Failed to submit form');
+            if (btn) { btn.innerText = originalText; btn.disabled = false; }
+          }
+        }).catch(function(){
+          alert('Network error occurred');
+          if (btn) { btn.innerText = originalText; btn.disabled = false; }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>
