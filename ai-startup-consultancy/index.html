@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test-yan-7 | AI Startup Consultancy for Growth & Scale</title>
+    <meta name="description" content="Expert AI startup consultancy to launch, price, and scale AI businesses fast. Hire advisors for GTM, technical strategy, and repeatable sales.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        :root {
+            --color-primary: #D32027;
+            --color-primary-dark: #b31b21;
+            --color-background: #000000;
+            --color-surface: #111111;
+            --color-text: #FFFFFF;
+            --color-text-muted: #888888;
+            --color-border: #222222;
+            --color-accent: #FFFFFF;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            line-height: 1.1;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Layout Components */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 8rem 0;
+        }
+
+        /* Navigation */
+        nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--color-border);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--color-background);
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 12rem;
+            padding-bottom: 6rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .text-link {
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .hero-mockup {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            height: 500px;
+            border-radius: 40px;
+            position: relative;
+            box-shadow: 0 40px 100px -20px rgba(211, 32, 39, 0.1);
+        }
+
+        .hero-mockup::after {
+            content: "SYSTEM READY";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--color-primary);
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--color-surface);
+            padding: 3rem;
+            border-radius: 40px;
+            border: 1px solid var(--color-border);
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--color-primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .feature-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(211, 32, 39, 0.1);
+            color: var(--color-primary);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--color-surface);
+            border-radius: 60px;
+            padding: 6rem 4rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+            color: var(--color-text);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            color: var(--color-primary);
+        }
+
+        /* CTA Section */
+        .final-cta {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            margin-top: 4rem;
+            background: var(--color-surface);
+            padding: 4rem;
+            border-radius: 40px;
+            border: 1px solid var(--color-border);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        input, textarea {
+            background: #000;
+            border: 1px solid var(--color-border);
+            padding: 1.25rem;
+            border-radius: 12px;
+            color: white;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-heading {
+            font-weight: 800;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                margin: 0 auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .features-grid, .steps, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-mockup {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, nav .btn {
+                display: none;
+            }
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full {
+                grid-column: span 1;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <base href="/ai-startup-consultancy/" />
+</head>
+<body>
+
+    <nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="index.html">
+                <img src="logo-test-yan-7.png" alt="test-yan-7 logo" style="height:40px;object-fit:contain">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="auth.html">Sign In</a></li>
+            </ul>
+            <a href="https://tes.test" class="btn btn-primary" data-track="cta_click">Get Started</a>
+        </div>
+    </nav>
+
+    <header class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Stop Chasing Shiny Demos. Build AI Business.</h1>
+                <p class="hero-subheadline">AI startup consultancy for founders and venture studios to solve pricing, GTM, and technical scaling without the generic playbook fluff.</p>
+                <div class="hero-actions">
+                    <a href="https://tes.test" class="btn btn-primary" data-track="cta_click">Apply for Advisory</a>
+                    <a href="#how-it-works" class="text-link">How we work →</a>
+                </div>
+            </div>
+            <div class="hero-mockup"></div>
+        </section>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Why Founders Hire Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-badge">ICP & POSITIONING</span>
+                    <h3>Zero in on Real Problems</h3>
+                    <p>Narrow down your focus from generic AI tools to a specific ICP. Stop building demos; start solving high-value business problems.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-badge">PRICING & PACKAGING</span>
+                    <h3>Repeatable Revenue Strategy</h3>
+                    <p>Usage-based or seat-based? We design pricing and offers that move you from initial experiments to predictable sales cycles.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-badge">GTM & SCALE</span>
+                    <h3>Scale Without Personal Burnout</h3>
+                    <p>Technical playbooks and GTM roadmaps that allow you to grow without every single delivery task landing on the founder's desk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <h2>3 Steps to AI Product Maturity</h2>
+                <p>We combine GTM strategy with AI technical nuance to guide you from prototype to scale.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <h3>Audit & Wedge</h3>
+                    <p>We analyze your technical stack and market position to find your "wedge"—the specific problem that gets you in the door.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <h3>Revenue Architecture</h3>
+                    <p>We build your pricing experiments and outbound playbooks. We ensure your data strategy supports long-term moat building.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <h3>Scaling Systems</h3>
+                    <p>Implementation of delivery playbooks. We help you hire and train your early team to handle growth while you focus on vision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="testimonials">
+                <h2 style="text-align: center; margin-bottom: 4rem;">Expert Backed</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-item">
+                        <p>"Generic advisors didn't understand our token-based pricing. test-yan-7 fixed our margins in two weeks."</p>
+                        <div class="testimonial-author">Founder, Series A AI SaaS</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"They helped us move from a 'cool tool' to a mission-critical enterprise platform. Best investment we made this year."</p>
+                        <div class="testimonial-author">CTO, Venture-backed Startup</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Finally, consultants who understand both LLM latency and outbound sales strategy. Rare find."</p>
+                        <div class="testimonial-author">Managing Partner, Venture Studio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="final-cta">
+                <h2>Ready to Scale?</h2>
+                <p>Hire the AI startup consultancy built for the 2025-2028 market cycle. Limited slots for fractional advisory.</p>
+                
+                <div class="form-container">
+                    <form data-backend="form" class="contact-form">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Alex Founder" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Work Email</label>
+                            <input type="email" name="email" placeholder="alex@startup.com" required>
+                        </div>
+                        <div class="form-group full">
+                            <label>Where are you in your journey?</label>
+                            <textarea name="message" rows="4" placeholder="Briefly describe your product and current bottleneck..."></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <button type="submit" class="btn btn-primary" data-track="cta_click">Submit Application</button>
+                            <p data-success style="display:none; color: var(--color-primary); font-weight: bold; margin-top: 1rem;">Success! We will be in touch shortly.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <img src="logo-test-yan-7.png" alt="test-yan-7 logo" style="height:32px;object-fit:contain">
+                </a>
+                <p style="font-size: 0.875rem;">AI startup consultancy to launch, grow, and scale AI businesses at the speed of modern tech.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="auth.html">Sign In</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Consultancy</h4>
+                <ul class="footer-links">
+                    <li><a href="#">GTM Playbook</a></li>
+                    <li><a href="#">Pricing Strategy</a></li>
+                    <li><a href="#">Technical Advisory</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">AI Frameworks</a></li>
+                    <li><a href="#">Roadmap 2025</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 test-yan-7. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg class="social-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+      var BACKEND = 'http://localhost:3000/api';
+      var TOKEN = 'b4ab5682df04a85f2837e93c6bc4ba102ba2f281aafcd57aa183f779ce2da323';
+      var DOMAIN = 'aistartupconsultancy.com';
+      var HEADERS = { 'Content-Type': 'application/json', 'X-Token': TOKEN, 'X-Domain': DOMAIN };
+
+      // 1. Auto-track pageview
+      fetch(BACKEND + '/track', {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify({ event: 'pageview', path: window.location.pathname })
+      }).catch(function(){});
+
+      // 2. Track CTA clicks
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('[data-track]');
+        if (el) {
+          fetch(BACKEND + '/track', {
+            method: 'POST',
+            headers: HEADERS,
+            body: JSON.stringify({ event: el.getAttribute('data-track'), path: window.location.pathname })
+          }).catch(function(){});
+        }
+      });
+
+      var FORM_ID = '134';
+
+      // 3. Handle forms (Contact, Signup, Waitlist)
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-backend]');
+        if (!form) return;
+        e.preventDefault();
+        var type = form.getAttribute('data-backend');
+        var endpoint = type === 'signup' ? '/users' : '/forms/submit';
+        
+        // Extract dynamic form fields
+        var data = {};
+        new FormData(form).forEach(function(v, k) { data[k] = v; });
+        
+        // Add Form ID if it's a general form and we have it
+        if (type === 'form' && FORM_ID) {
+          data.formId = FORM_ID;
+        }
+
+        var btn = form.querySelector('button[type="submit"]');
+        var originalText = '';
+        if (btn) {
+          originalText = btn.innerText;
+          btn.innerText = 'Sending...';
+          btn.disabled = true;
+        }
+
+        // Track Form Submission Event
+        fetch(BACKEND + '/track', {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify({ 
+            event: 'form_submission', 
+            path: window.location.pathname,
+            metadata: { formType: type } 
+          })
+        }).catch(function(){});
+
+        // Submit Form Data
+        fetch(BACKEND + endpoint, {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify(data)
+        }).then(function(r) { return r.json(); }).then(function(res) {
+          if (res.success) {
+            var msg = form.querySelector('[data-success]');
+            if (msg) { msg.style.display = 'block'; }
+            form.reset();
+            if (btn) btn.style.display = 'none';
+          } else {
+            alert(res.error || 'Failed to submit form');
+            if (btn) { btn.innerText = originalText; btn.disabled = false; }
+          }
+        }).catch(function(){
+          alert('Network error occurred');
+          if (btn) { btn.innerText = originalText; btn.disabled = false; }
+        });
+      });
+    })();
+    </script>
+</body>
+</html>
